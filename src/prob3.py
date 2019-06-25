@@ -22,25 +22,6 @@ class Solution(object):
         Returns:
             A list contains the serialized binary tree.
         """
-        queue = deque([root])
-        ret = []
-        while queue:
-            node = queue.popleft()
-            if node:
-                ret.append(node.val)
-                queue.append(node.left)
-                queue.append(node.right)
-            else:
-                ret.append(None)
-        return ret
-
-    def serialize(self, root):
-        """BFS traverse and serialize bianry tree
-        Args:
-            root: Node root; root of a binary tree
-        Returns:
-            A list contains the serialized binary tree.
-        """
         if not root:
             return list()
 
@@ -69,15 +50,9 @@ class Solution(object):
                 root.left = helper(2*N+1, lst)
                 root.right = helper(2*N+2, lst)
             return root
-            
+
         if len(lst) == 0:
             return None
 
         root = helper(0, lst)
         return root
-        
-
-
-                
-
-
