@@ -1,41 +1,45 @@
 """
 Questions: what if the doubly linked list allows cycle?
 """
-class XNode:
-    def __init__(self, val, both=0):
+class XORNode:
+    def __init__(self, val, prev=-1, next=-1):
+        """
+        Args:
+            val: node value
+            prev: address of the previous node; -1 denotes addr of None
+            next: address of the next node; -1 denotes addr of None
+        """
         self.val = val
-        self.both = both
+        self.both = prev ^ next
 
-class Node:
-    def __init__(self, val, prev=None, next=None):
-        self.val = val
-        self.prev = prev
-        self.next = next
-
-class Solution:
+class Solution_XOR:
     def __init__(self, head):
-        self.head = head
+        self.memory = [XORNode(head)]
+
 
     def __str__(self):
         string = "An XOR linked list is a more memory efficient doubly linked list. Instead of each node holding next and prev fields, it holds a field named both, which is an XOR of the next node and the previous node. Implement an XOR linked list; it has an add(element) which adds the element to the end, and a get(index) which returns the node at index. If using a language that has no pointers (such as Python), you can assume you have access to get_pointer and dereference_pointer functions that converts between nodes and memory addresses."
         return string
 
-    def add(self, node):
+    def add(self, val):
         """
-        Adds a node contains element at the end of the doubly linked list
+        Adds a node contains val at the end of the doubly linked list
         Args:
-            node; Node instance to be added at the end
+            val; value of a node which will be added at the end
         Return:
             the head of the list
         """
-        curr = self.head
-        while curr.next:
-            curr = curr.next
-        
-        curr.next = node
-        node.prev = curr
+        prev, curr = -1, self.memory[0]
+        while (curr.both ^ prev) != -1:
+            next_addr = curr.both ^ prev
+            prev = self.get_pointer(curr)
+            curr = self.dereference_pointer(next_addr)
 
-        return self.head
+        new_node = XORNode(val, self.get_pointer(curr), -1)
+        self.memory.append(new_node)
+        curr.both = prev ^ self.get_pointer(new_node)
+
+        return self.memory[0]
 
     def get(self, idx):
         """
@@ -46,12 +50,18 @@ class Solution:
         Returns:
             Node at idx
         """
-        curr = self.head
+        prev, curr = -1, self.memory[0]
 
-        while curr.next and idx > 0:
-            curr = curr.next
+        while (curr.both ^ prev) != -1 and idx > 0:
+            next_addr = curr.both ^ prev
+            prev = self.get_pointer(curr)
+            curr = self.dereference_pointer(next_addr)
             idx -= 1
 
         return curr
 
+    def get_pointer(self, node):
+        return self.memory.index(node)
 
+    def dereference_pointer(self, idx):
+        return self.memory[idx]
