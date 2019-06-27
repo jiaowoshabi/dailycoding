@@ -22,8 +22,8 @@ class Solution_XOR:
         return string
 
     def add(self, val):
-        """
-        Adds a node contains val at the end of the doubly linked list
+        """Adds a node contains val at the end of the doubly linked list
+
         Args:
             val; value of a node which will be added at the end
         Return:
@@ -42,9 +42,9 @@ class Solution_XOR:
         return self.memory[0]
 
     def get(self, idx):
-        """
-        Get Node obj at idx.
+        """Get Node obj at idx.
         pre: idx < list length
+
         Args:
             idx: int
         Returns:
