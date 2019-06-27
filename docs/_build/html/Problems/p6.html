@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>P6 (Hard) &#8212; DailyCodingProblem 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="P5 (Medium)" href="p5.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="p6-hard">
+<h1>P6 (Hard)<a class="headerlink" href="#p6-hard" title="Permalink to this headline">¶</a></h1>
+<p>This problem was asked by <strong>Google</strong>.</p>
+<div class="section" id="problem-statement">
+<h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p>An XOR linked list is a more memory efficient doubly linked list. Instead of each node holding <code class="docutils literal notranslate"><span class="pre">next</span></code> and <code class="docutils literal notranslate"><span class="pre">prev</span></code> fields, it holds a field named <code class="docutils literal notranslate"><span class="pre">both</span></code>, which is an XOR of the next node and the previous node. Implement an XOR linked list; it has an <code class="docutils literal notranslate"><span class="pre">add(element)</span></code> which adds the element to the end, and a <code class="docutils literal notranslate"><span class="pre">get(index)</span></code> which returns the node at index.</p>
+<p>If using a language that has no pointers (such as Python), you can assume you have access to <code class="docutils literal notranslate"><span class="pre">get_pointer</span></code> and <code class="docutils literal notranslate"><span class="pre">dereference_pointer</span></code> functions that converts between nodes and memory addresses.</p>
+</div>
+<div class="section" id="idea">
+<h2>Idea<a class="headerlink" href="#idea" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 22%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A XOR B</p></th>
+<th class="head"><p>A XOR (A XOR B)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+</tr>
+<tr class="row-even"><td><p>False</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>True</p></td>
+</tr>
+<tr class="row-odd"><td><p>True</p></td>
+<td><p>True</p></td>
+<td><p>False</p></td>
+<td><p>True</p></td>
+</tr>
+</tbody>
+</table>
+<p>XOR List Representation:
+Let us call the address variable in XOR representation npx (XOR of next and previous)</p>
+<p>Node A:
+npx = 0 XOR add(B) // bitwise XOR of zero and address of B</p>
+<p>Node B:
+npx = add(A) XOR add(C) // bitwise XOR of address of A and address of C</p>
+<p>Node C:
+npx = add(B) XOR add(D) // bitwise XOR of address of B and address of D</p>
+<p>Node D:
+npx = add(C) XOR 0 // bitwise XOR of address of C and 0</p>
+<p>Traversal of XOR Linked List:
+We can traverse the XOR list in both forward and reverse direction. While traversing the list we need to remember the address of the previously accessed node in order to calculate the next node’s address. For example when we are at node C, we must have address of B. XOR of add(B) and npx of C gives us the add(D). The reason is simple: npx(C) is “add(B) XOR add(D)”. If we do xor of npx(C) with add(B), we get the result as “add(B) XOR add(D) XOR add(B)” which is “add(D) XOR 0” which is “add(D)”. So we have the address of next node. Similarly we can traverse the list in backward direction.</p>
+</div>
+<div class="section" id="module-src.prob6">
+<span id="docstrings"></span><h2>Docstrings<a class="headerlink" href="#module-src.prob6" title="Permalink to this headline">¶</a></h2>
+<p>Questions: what if the doubly linked list allows cycle?</p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DailyCodingProblem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Problems.html">Problems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="p1.html">P1 (Easy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2.html">P2 (Hard)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3.html">P3 (Medium)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p4.html">P4 (Hard)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p5.html">P5 (Medium)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">P6 (Hard)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Problems.html">Problems</a><ul>
+      <li>Previous: <a href="p5.html" title="previous chapter">P5 (Medium)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Wenhao Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Problems/p6.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
