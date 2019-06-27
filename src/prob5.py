@@ -12,11 +12,7 @@ class Solution:
         return string
 
     def car(self, f):
-        def first(a, b):
-            return a
-        return f (first)
+        return f (lambda a, b : a)
 
     def cdr(self, f):
-        def second(a, b):
-            return b
-        return f (second)
+        return f (lambda a, b : b)
