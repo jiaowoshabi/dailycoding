@@ -1,0 +1,181 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>P3 (Medium) &#8212; DailyCodingProblem 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P4 (Hard)" href="p4.html" />
+    <link rel="prev" title="P2 (Hard)" href="p2.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="p3-medium">
+<h1>P3 (Medium)<a class="headerlink" href="#p3-medium" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem-statement">
+<h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p>This problem was asked by <strong>Google</strong>.</p>
+<p>Given the root to a binary tree, implement <code class="docutils literal notranslate"><span class="pre">serialize(root)</span></code>, which serializes the tree into a string, and <code class="docutils literal notranslate"><span class="pre">deserialize(s)</span></code>, which deserializes the string back into the tree.</p>
+<p>For example, given the following <code class="docutils literal notranslate"><span class="pre">Node</span></code> class:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">val</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">left</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">right</span>
+</pre></div>
+</div>
+<p>The following test should pass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;left.left&#39;</span><span class="p">)),</span> <span class="n">Node</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">))</span>
+<span class="k">assert</span> <span class="n">deserialize</span><span class="p">(</span><span class="n">serialize</span><span class="p">(</span><span class="n">node</span><span class="p">))</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">val</span> <span class="o">==</span> <span class="s1">&#39;left.left&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-src.prob3">
+<span id="docstrings"></span><h2>Docstrings<a class="headerlink" href="#module-src.prob3" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.prob3.Solution">
+<em class="property">class </em><code class="sig-prename descclassname">src.prob3.</code><code class="sig-name descname">Solution</code><a class="headerlink" href="#src.prob3.Solution" title="Permalink to this definition">¶</a></dt>
+<dd><p>docstring for Solution</p>
+<dl class="method">
+<dt id="src.prob3.Solution.deserialize">
+<code class="sig-name descname">deserialize</code><span class="sig-paren">(</span><em class="sig-param">lst</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prob3.Solution.deserialize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">deserialize</span><span class="p">([</span><span class="s2">&quot;root&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">])</span><span class="o">.</span><span class="n">val</span>
+<span class="go">&quot;root&quot;</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>lst</strong> – serialized binary tree</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>deserialized binary tree</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.prob3.Solution.serialize">
+<code class="sig-name descname">serialize</code><span class="sig-paren">(</span><em class="sig-param">root</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prob3.Solution.serialize" title="Permalink to this definition">¶</a></dt>
+<dd><p>BFS traverse and serialize bianry tree</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">serialize</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">))</span>
+<span class="go">[&quot;root&quot;, None, None]</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root</strong> – Node root; root of a binary tree</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list contains the serialized binary tree.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DailyCodingProblem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Problems.html">Problems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="p1.html">P1 (Easy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2.html">P2 (Hard)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">P3 (Medium)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p4.html">P4 (Hard)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p5.html">P5 (Medium)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p6.html">P6 (Hard)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Problems.html">Problems</a><ul>
+      <li>Previous: <a href="p2.html" title="previous chapter">P2 (Hard)</a></li>
+      <li>Next: <a href="p4.html" title="next chapter">P4 (Hard)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Wenhao Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Problems/p3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

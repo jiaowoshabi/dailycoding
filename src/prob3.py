@@ -17,6 +17,10 @@ class Solution(object):
 
     def serialize(self, root):
         """BFS traverse and serialize bianry tree
+
+        >>> s.serialize(Node("root"))
+        ["root", None, None]
+
         Args:
             root: Node root; root of a binary tree
         Returns:
@@ -39,6 +43,9 @@ class Solution(object):
 
     def deserialize(self, lst):
         """
+        >>> s.deserialize(["root", None, None]).val
+        "root"
+
         Args:
             lst: serialized binary tree
         Returns:

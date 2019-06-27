@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>P5 (Medium) &#8212; DailyCodingProblem 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P6 (Hard)" href="p6.html" />
+    <link rel="prev" title="P4 (Hard)" href="p4.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="p5-medium">
+<h1>P5 (Medium)<a class="headerlink" href="#p5-medium" title="Permalink to this headline">¶</a></h1>
+<p>This problem was asked by <strong>Jane Street</strong>.</p>
+<div class="section" id="problem-statement">
+<h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">cons(a,</span> <span class="pre">b)</span></code> constructs a pair, and <code class="docutils literal notranslate"><span class="pre">car(pair)</span></code> and <code class="docutils literal notranslate"><span class="pre">cdr(pair)</span></code> returns the first and last element of that pair. For example, <code class="docutils literal notranslate"><span class="pre">car(cons(3,</span> <span class="pre">4))</span></code> returns <code class="docutils literal notranslate"><span class="pre">3</span></code>, and <code class="docutils literal notranslate"><span class="pre">cdr(cons(3,</span> <span class="pre">4))</span></code> returns <code class="docutils literal notranslate"><span class="pre">4</span></code>.</p>
+<p>Given this implementation of cons:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cons</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">pair</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pair</span>
+</pre></div>
+</div>
+<p>Implement <code class="docutils literal notranslate"><span class="pre">car</span></code> and <code class="docutils literal notranslate"><span class="pre">cdr</span></code>.</p>
+</div>
+<div class="section" id="module-src.prob5">
+<span id="docstrings"></span><h2>Docstrings<a class="headerlink" href="#module-src.prob5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">DailyCodingProblem</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../Problems.html">Problems</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="p1.html">P1 (Easy)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p2.html">P2 (Hard)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p3.html">P3 (Medium)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p4.html">P4 (Hard)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">P5 (Medium)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="p6.html">P6 (Hard)</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../Problems.html">Problems</a><ul>
+      <li>Previous: <a href="p4.html" title="previous chapter">P4 (Hard)</a></li>
+      <li>Next: <a href="p6.html" title="next chapter">P6 (Hard)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Wenhao Zhang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.1.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/Problems/p5.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
