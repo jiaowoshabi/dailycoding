@@ -7,3 +7,6 @@ def test_prob6_1():
     assert s.add(Node("bar")).val == "foo"
     assert s.head.next.val == "bar"
     assert s.head.next.prev.val == "foo"
+
+    assert s.get(0).val == "foo"
+    assert s.get(1).val == "bar"
