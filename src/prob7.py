@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 class Solution:
     def __init__(self):
         pass
@@ -11,22 +13,23 @@ class Solution:
         """Dynamic Programming solution
         Define OPT(str) as the optimal solution, which denotes the number of ways of decoding. Recursion using bottom up:
 
-        * Base case: OPT("x") = 1
+        * Base case: OPT("x") = 1 or OPT("") = 1
         * Recurisve case:
-            Every time a new letter, ``curr`` is added. There can only be 2 cases:
-            * if ``prev+curr`` can form a new letter, then OPT(str+curr) = OPT(str)+1
-            * otherwise, OPT(str+curr) = OPT(str)
+            The OPT(string) = 1) + 2)
+            1) if the first two letters of current string is a letter, then # of ways of decoding is OPT(string[2:]) 
+            2) # of ways of decoding is OPT(strring[1:])
         """
-        if string.startswith("0"):
-            return 0
-        elif len(string) <= 1:
-            return 1
+        cache = defaultdict(int)
+        cache[len(string)] = 1
         
-        total = 0
+        for i in reversed(range(len(string))):
+            if string[i].startswith("0"):
+                cache[i] = 0
+            elif i == len(string) - 1:
+                cache[i] = 1
+            else:
+                if int(string[i:i+2]) <= 26:
+                    cache[i] += cache[i+2]
+                cache[i] += cache[i+1]
 
-        if int(string[:2]) <= 26:
-            total += self.solution(string[2:])
-
-        total += self.solution(string[1:])
-
-        return total
+        return cache[0]
