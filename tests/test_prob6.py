@@ -1,17 +1,6 @@
-from src.prob6 import Solution, Solution_XOR, Node, XORNode
+from src.prob6 import Solution_XOR, XORNode
 
 def test_prob6_1():
-    s = Solution(Node("foo"))
-
-    assert s.head.val == "foo"
-    assert s.add(Node("bar")).val == "foo"
-    assert s.head.next.val == "bar"
-    assert s.head.next.prev.val == "foo"
-
-    assert s.get(0).val == "foo"
-    assert s.get(1).val == "bar"
-
-def test_prob6_2():
     s = Solution_XOR("foo")
     assert s.memory[0].val == "foo"
     assert s.add("bar").val == "foo"
