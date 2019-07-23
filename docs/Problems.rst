@@ -9,4 +9,7 @@ Problems
    Problems/p3.rst
    Problems/p4.rst
    Problems/p5.rst
-   Problems/p6.rst   
+   Problems/p6.rst
+   Problems/p7.rst
+   Problems/p8.rst
+   Problems/p24.rst   

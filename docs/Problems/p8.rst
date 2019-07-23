@@ -1,0 +1,34 @@
+P8 (Easy)
+=========
+
+This problem was asked by **Google**.
+
+=================
+Problem statement
+=================
+
+This problem was asked by Google.
+
+A unival tree (which stands for "universal value") is a tree where all nodes under it have the same value.
+
+Given the root to a binary tree, count the number of unival subtrees.
+
+For example, the following tree has 5 unival subtrees:
+
+   0
+  / \
+ 1   0
+    / \
+   1   0
+  / \
+ 1   1
+
+=================
+Initial Ideas
+=================
+
+1. Run DFS on each node in the tree. Visit all the nodes from each root node and add them to a set. Count # of different values in the set. If the set has two unique values, then there is no unival tree from this root.
+
+2. Assume we have a tree with N nodes. At each iteration, the time complexity of traversing the tre(e (subtrees) is O(N). Adding a node to set takes O(1). 
+
+**Overall time complexity is O(N^2). Space complexity is O(N).**
