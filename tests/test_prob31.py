@@ -2,7 +2,6 @@ from src.prob31 import Solution
 
 def test_prob31_1():
     s = Solution()
-    print(s.solution("kitten", "sitting"))
     assert s.solution("kitten", "sitting") == 3
 
 def test_prob31_2():
