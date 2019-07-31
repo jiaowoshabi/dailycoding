@@ -1,0 +1,39 @@
+P40 (Easy)
+============
+
+This problem was asked by **Google**.
+
+Problem statement
+=================
+
+
+Given an array of integers where every integer occurs three times except for one integer, which only occurs once, find and return the non-duplicated integer.
+
+For example, given [6, 1, 3, 3, 3, 6, 6], return 1. Given [13, 19, 13, 13], return 19.
+
+Requirements
+============
+Do this in O(N) time and O(1) space.
+
+Ideas
+=====
+
+Approach 1:
+
+Have a dictionary counting the occurrence for each number encountered. After one-pass search, find the key:value with count not equal to 3.
+
+Input size: N
+Time complexity: O(N)
+Space complexity: O(N)
+
+
+Approach 2:
+
+Following is another O(n) time complexity and O(1) extra space method suggested by aj. We can sum the bits in same positions for all the numbers and take modulo with 3. The bits for which sum is not multiple of 3, are the bits of number with single occurrence.
+Let us consider the example array {5, 5, 5, 8}. The 101, 101, 101, 1000
+Sum of first bits%3 = (1 + 1 + 1 + 0)%3 = 0;
+Sum of second bits%3 = (0 + 0 + 0 + 0)%0 = 0;
+Sum of third bits%3 = (1 + 1 + 1 + 0)%3 = 0;
+Sum of fourth bits%3 = (1)%3 = 1;
+Hence number which appears once is 1000
+
