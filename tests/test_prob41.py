@@ -1,52 +1,13 @@
-from src.prob43 import Solution
+from src.prob41 import Solution
 
-def test_prob43_push():
+def test_prob41_1():
     s = Solution()
+    assert s.solution([('SFO', 'HKO'), ('YYZ', 'SFO'), ('YUL', 'YYZ'), ('HKO', 'ORD')], 'YUL') == ['YUL', 'YYZ', 'SFO', 'HKO', 'ORD']
 
-    s.push(1)
-    assert s.stack == [1]
-    assert s.max_curr == [1]
-
-    s.push(4)
-    assert s.stack == [1,4]
-    assert s.max_curr == [1,4]
-
-    s.push(2)
-    assert s.stack == [1,4,2]
-    assert s.max_curr == [1,4]
-
-def test_prob43_pop1():
+def test_prob41_2():
     s = Solution()
+    assert s.solution([('A', 'B'), ('A', 'C'), ('B', 'C'), ('C', 'A')], 'A') == ['A', 'B', 'C', 'A', 'C']
 
-    s.push(1)
-    assert s.stack == [1]
-    assert s.max_curr == [1]
-
-    assert s.pop() == 1
-    assert s.stack == []
-    assert s.stack == []
-
-def test_prob43_pop2():
+def test_prob41_3():
     s = Solution()
-    s.push(1)
-    assert s.stack == [1]
-    assert s.max_curr == [1]
-
-    s.push(4)
-    assert s.stack == [1,4]
-    assert s.max_curr == [1,4]
-
-    s.push(2)
-    assert s.stack == [1,4,2]
-    assert s.max_curr == [1,4]
-
-    assert s.pop() == 2
-    assert s.stack == [1,4]
-    assert s.stack == [1,4]
-
-def test_prob43_max():
-    s = Solution()
-    s.push(1)
-    s.push(4)
-    s.push(2)
-    assert s.max() == 4
+    assert s.solution([('SFO', 'COM'), ('COM', 'YYZ')], 'COM') == None 
