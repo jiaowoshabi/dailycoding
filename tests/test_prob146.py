@@ -9,4 +9,4 @@ def test_prob146_1():
 
     root = deserialize('[0,1,0,null,null,0,0,null,null,null,null]')
     new = s.solution(root)
-    drawtree(new)
+    # drawtree(new)
